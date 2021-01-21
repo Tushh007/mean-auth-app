@@ -14,7 +14,8 @@ import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { FlashMessagesModule } from 'angular2-flash-messages';
-
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,13 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
     FormsModule,
     FlashMessagesModule.forRoot(),
   ],
-  providers: [ValidateService, AuthService],
-  bootstrap: [AppComponent]
+  providers: [
+    ValidateService,
+    AuthGuard,
+    AuthService,
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService,
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
