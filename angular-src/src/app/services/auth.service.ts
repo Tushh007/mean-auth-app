@@ -14,11 +14,11 @@ export class AuthService {
   constructor(private http: HttpClient, public jwtHelper: JwtHelperService) {}
 
   registerUser(user: User) {
-    return this.http.post('http://localhost:3000/users/register', user);
+    return this.http.post('users/register', user);
   }
 
   authenticateUser(user: { username: String; password: String }) {
-    return this.http.post('http://localhost:3000/users/auth', user);
+    return this.http.post('users/auth', user);
   }
 
   getProfile() {
@@ -30,7 +30,7 @@ export class AuthService {
       }),
     };
 
-    return this.http.get('http://localhost:3000/users/profile', httpOptions);
+    return this.http.get('users/profile', httpOptions);
   }
 
   storeUserData(token: any, user: any) {

@@ -898,10 +898,10 @@ class AuthService {
         this.jwtHelper = jwtHelper;
     }
     registerUser(user) {
-        return this.http.post('http://localhost:3000/users/register', user);
+        return this.http.post('users/register', user);
     }
     authenticateUser(user) {
-        return this.http.post('http://localhost:3000/users/auth', user);
+        return this.http.post('users/auth', user);
     }
     getProfile() {
         this.loadToken();
@@ -911,7 +911,7 @@ class AuthService {
                 Authorization: this.authToken,
             }),
         };
-        return this.http.get('http://localhost:3000/users/profile', httpOptions);
+        return this.http.get('users/profile', httpOptions);
     }
     storeUserData(token, user) {
         localStorage.setItem('id_token', token);
