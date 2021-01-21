@@ -10,6 +10,11 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ValidateService } from './services/validate.service';
+import { AuthService } from './services/auth.service';
+import { FormsModule } from '@angular/forms';
+import { FlashMessagesModule } from 'angular2-flash-messages';
+
 
 @NgModule({
   declarations: [
@@ -19,14 +24,16 @@ import { ProfileComponent } from './components/profile/profile.component';
     RegisterComponent,
     HomeComponent,
     DashboardComponent,
-    ProfileComponent
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    FlashMessagesModule.forRoot(),
   ],
-  providers: [],
+  providers: [ValidateService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
